@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb Switch</title>
+</head>
+<body>
+    <img src="BULB-OFF.jpg" alt="" class="bulbimg" id="bulbimg"><br>
+    <button id="switch">Switch On</button>
+
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: black;
+        }
+        .bulbimg{
+            width: 20%;
+        }
+        button{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 10px;
+            background-color:azure;
+            font-weight: bold;
+            font-size: larger;
+        }
+        button:hover{
+            background-color: chartreuse;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        const btn = document.getElementById('switch')
+        const img = document.getElementById('bulbimg')
+
+        btn.addEventListener('click', OnOff)
+
+        function OnOff(e){
+            if(btn.textContent.includes('On')){
+                btn.textContent = "Switch Off"
+                img.src = "BULB-ON.jpg"
+            }
+            else{
+                btn.textContent = "Switch On"
+                img.src = "BULB-OFF.jpg"
+            }
+        }
+    </script>
+</body>
+</html>
