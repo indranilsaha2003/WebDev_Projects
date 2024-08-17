@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List items</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: calc(100% - 130px);
+            padding: 10px 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn {
+            width: 120px;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .list {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list-group-item {
+            background-color: #ffffff;
+            padding: 10px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            /* Remove gaps between list items */
+        }
+
+        .bold-item {
+            background-color: #e2e6ea;
+            font-weight: bold;
+        }
+
+        .countBtn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            color: #000000;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin: 0 5px;
+        }
+
+        .countBtn:hover {
+            background-color: #ffffff84;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .total-price {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .form-control option {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 16px;
+        }
+
+        .form-control option:hover {
+            background-color: #f8f9fa;
+        }
+
+        .removeBtn {
+            width: 80px;
+            background-color: rgba(255, 0, 0, 0.847);
+            transition: background-color 0.3s ease-in-out box-shadow 0.3s ease-in-out;
+        }
+
+        .removeBtn:hover {
+            background-color: rgb(104, 2, 2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-control {
+            width: calc(100% - 130px);
+            padding: 10px 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 12px auto;
+            cursor: pointer;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+        .form-control option {
+            padding: 10px;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-control option:hover,
+        .form-control option:focus {
+            background-color: #f0f0f0;
+        }
+
+        .form-control option:checked {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        /* Style for the select when opened */
+        .form-control::-ms-expand {
+            display: none;
+        }
+
+        .form-control:focus::-ms-value {
+            background-color: transparent;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-group">
+            <select id="item-select" class="form-control">
+                <option value="" disabled selected>Choose items</option>
+                <option value="Table" data-price="3500">Table - ₹3500</option>
+                <option value="Chair" data-price="1500">Chair - ₹1500</option>
+                <option value="Glass" data-price="200">Glass - ₹200</option>
+                <option value="Toy" data-price="500">Toy - ₹500</option>
+                <option value="Bottle" data-price="150">Bottle - ₹150</option>
+                <option value="Watch" data-price="3000">Watch - ₹3000</option>
+                <option value="Lamp" data-price="1200">Lamp - ₹1200</option>
+                <option value="Sofa" data-price="7000">Sofa - ₹7000</option>
+                <option value="Desk" data-price="2500">Desk - ₹2500</option>
+                <option value="Curtains" data-price="800">Curtains - ₹800</option>
+            </select>
+            <button class="btn" type="button" id="button-addon1">Add to cart</button>
+        </div>
+        <div class="list">
+            <ul class="list-group">
+                <li class="list-group-item bold-item" style="justify-content: center;">Shopping Cart</li>
+            </ul>
+            <div id="total-price" class="total-price">Total Price: ₹0</div>
+        </div>
+    </div>
+    <script>
+        let addBtn = document.getElementById('button-addon1');
+        addBtn.addEventListener('click', addItem);
+
+        function addItem(e) {
+            let itemSelect = document.getElementById('item-select');
+            let selectedOption = itemSelect.options[itemSelect.selectedIndex];
+            let itemName = selectedOption.value;
+            let itemPrice = parseFloat(selectedOption.getAttribute('data-price'));
+
+            if (itemName && itemPrice) {
+                // Check if the item already exists in the cart
+                let existingItems = document.querySelectorAll('.list-group-item span');
+                for (let item of existingItems) {
+                    if (item.textContent.startsWith(itemName)) {
+                        alert("This item is already in your cart.");
+                        itemSelect.selectedIndex = 0; // Reset the select field
+                        return; // Exit the function early
+                    }
+                }
+
+                let newLi = document.createElement('li');
+                newLi.classList.add('list-group-item');
+
+                // Initialize count
+                let count = 1;
+
+                // Create the item name element
+                let itemNameSpan = document.createElement('span');
+                itemNameSpan.textContent = `${itemName} - ₹${itemPrice}`;
+
+                // Create container for buttons
+                let buttonContainer = document.createElement('div');
+                buttonContainer.style.display = 'flex';
+                buttonContainer.style.alignItems = 'center';
+
+                // Create count display
+                let countText = document.createElement('span');
+                countText.textContent = count;
+                countText.style.margin = "0 10px"; // Spacing for better layout
+
+                // Create count up button
+                let countUpBtn = document.createElement('button');
+                countUpBtn.innerText = "+";
+                countUpBtn.classList.add('countBtn');
+
+                // Create count down button
+                let countDownBtn = document.createElement('button');
+                countDownBtn.innerText = "-";
+                countDownBtn.classList.add('countBtn');
+
+                // Create remove button
+                let removeBtn = document.createElement('button');
+                removeBtn.innerText = "Remove";
+                removeBtn.classList.add('btn', 'btn-danger', 'removeBtn');
+                removeBtn.style.marginLeft = "10px";
+
+                // Append buttons to the button container
+                buttonContainer.appendChild(countDownBtn);
+                buttonContainer.appendChild(countText);
+                buttonContainer.appendChild(countUpBtn);
+                buttonContainer.appendChild(removeBtn);
+
+                // Append item name and button container to the list item
+                newLi.appendChild(itemNameSpan);
+                newLi.appendChild(buttonContainer);
+
+                // Append new item to the list
+                let listGroup = document.querySelector('.list-group');
+                listGroup.appendChild(newLi);
+
+                // Clear the select field after adding the item
+                itemSelect.selectedIndex = 0;
+
+                // Update total price
+                updateTotalPrice(itemPrice, count);
+
+                // Event listeners for count up and down buttons
+                countUpBtn.addEventListener('click', function () {
+                    count++;
+                    countText.textContent = count;
+                    updateTotalPrice(itemPrice, 1); // Add price of one more item
+                });
+
+                countDownBtn.addEventListener('click', function () {
+                    if (count > 1) {
+                        count--;
+                        countText.textContent = count;
+                        updateTotalPrice(-itemPrice, 1); // Subtract price of one less item
+                    }
+                });
+
+                // Add click event listener to remove the item when "Remove" is clicked
+                removeBtn.addEventListener('click', function () {
+                    // Remove total price of all items of this type
+                    updateTotalPrice(-itemPrice * count, 1);
+                    listGroup.removeChild(newLi);
+                });
+            }
+        }
+
+        function updateTotalPrice(priceChange, countChange) {
+            let totalPriceElement = document.getElementById('total-price');
+            let currentTotal = parseFloat(totalPriceElement.textContent.replace('Total Price: ₹', ''));
+            let newTotal = currentTotal + (priceChange * countChange);
+            totalPriceElement.textContent = `Total Price: ₹${Math.max(newTotal, 0).toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>
